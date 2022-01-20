@@ -1,35 +1,19 @@
 package com.Abdullah;
 
-public class BST<T extends Comparable<T>>  {
-
-	class Node  {
-		public T data;
-		private Node left;
-		public Node right;
-		Node() {
-			data = null;
-			setLeft(right = null);
-		}
-
-		public Node getLeft() {
-			return left;
-		}
-
-		public void setLeft(Node left) {
-			this.left = left;
-		}
-	}
+public class BST<T extends Comparable<T>>   extends Node<T> {
 
 
-	private Node root;
+
+
+	private Node<T> root;
 
 	public BST() {
 		this.root = null;
 	}
 
-	public Node insert(Node pNode, T data) {
+	public Node<T> insert(Node<T> pNode, T data) {
 			if (pNode == null) {
-				Node newNode = new Node();
+				Node<T> newNode = new Node<>();
 				newNode.data = data;
 				pNode = newNode;
 			}
@@ -47,7 +31,7 @@ public class BST<T extends Comparable<T>>  {
 	}
 
 
-	public void inOrder(Node root) {
+	public void inOrder(Node<T> root) {
 		if (root == null) {
 			return;
 		}
@@ -59,7 +43,7 @@ public class BST<T extends Comparable<T>>  {
 		inOrder(root);
 	}
 
-	public void preOrder(Node root) {
+	public void preOrder(Node<T> root) {
 		if (root == null) {
 			return;
 		}
@@ -71,7 +55,7 @@ public class BST<T extends Comparable<T>>  {
 		preOrder(root);
 	}
 
-	public void postOrder(Node root) {
+	public void postOrder(Node<T> root) {
 		if (root == null) {
 			return;
 		}
@@ -83,7 +67,7 @@ public class BST<T extends Comparable<T>>  {
 		postOrder(root);
 	}
 
-	public Node search (Node pNode, T key) {
+	public Node<T> search (Node<T> pNode, T key) {
 		if (pNode == null) {
 			return null;
 		}
@@ -104,7 +88,7 @@ public class BST<T extends Comparable<T>>  {
 		return search(root, key) != null;
 	}
 
-	public T findMin(Node pNode) {
+	public T findMin(Node<T> pNode) {
 		if (pNode == null) {
 			return null;
 		} else if (pNode.getLeft() == null) {
@@ -121,7 +105,7 @@ public class BST<T extends Comparable<T>>  {
 		return findMax(root);
 	}
 
-	public T findMax(Node pNode) {
+	public T findMax(Node<T> pNode) {
 		if (pNode == null) {
 			return null;
 		} else if (pNode.right == null) {
@@ -131,7 +115,7 @@ public class BST<T extends Comparable<T>>  {
 		return findMin(pNode.right);
 	}
 
-	public Node delete(Node pNode, T item) {
+	public Node<T> delete(Node<T> pNode, T item) {
 			if (pNode == null) {
 				return null;
 			}
